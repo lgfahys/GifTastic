@@ -15,7 +15,6 @@ p {
     color: rosybrown;
     font-weight: bold;
     font-style: italic;
-    text-align: left;
 }
 
 .container {
@@ -68,10 +67,9 @@ p {
 }
 
 img {
-    height: 150px;
-    width: 200px;
-    padding: 10px;
-    margin: 0 auto;
+    height: 200px;
+    width: 250px;
+    margin: 20px;
 }
 
 
