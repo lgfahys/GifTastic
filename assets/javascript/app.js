@@ -13,8 +13,6 @@ $(document).ready(function () {
             method: "GET"
 
         }).then(function (response) {
-            // emptying the memes div each time user clicks a meme button
-            $("#memes").empty();
             // looping through 10 gifs and appending the gif url/rating to the #memes div
             for (var i = 0; i < 10; i++) {
                 var rating = response.data[i].rating;
