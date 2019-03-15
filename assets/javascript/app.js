@@ -6,57 +6,57 @@
 
 // add form for user to add a new meme category
 
-$( document ).ready(function() {
+$(document).ready(function () {
+    // creating a memes array to hold all meme categories
+    var memes = ["kermit", "the office", "pepe the frog", "mr. krabs", "doge"];
 
-// creating a memes array to hold all meme categories
-var memes = ["kermit", "the office", "grumpy cat", "pepe the frog", "mr. krabs", "doge"];
+    // creating a function
+    function displayMemes() {
 
-// creating a function
-function displayMemes() {
+        var meme = $(this).attr("data-name");
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=5WvKlaf4SS3q9eGvInak6z3LoqlHOkgN&q=memes+" + meme + "&limit=10";
 
-var meme = $(this).attr("data-name");
-var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=5WvKlaf4SS3q9eGvInak6z3LoqlHOkgN&q=memes" + meme + "&limit=10";
+        $.ajax({
+            url: queryURL,
+            method: "GET"
 
-$.ajax({
-    url: queryURL,
-    method: "GET"
-
-}).then(function (response) {
-
-    // looping through 10 gifs and appending them to the memes div
-    for (var i = 0; i < 10; i++) {
-    console.log(response.data[i].rating);
-    var rating = response.data[i].rating;
-    var ratingDisplay = $("<p>").text("Rating: " + rating);
-    $("#memes").append(ratingDisplay);
-    var gifURL = response.data[i].images.original_still.url;
-    var gif = $("<img>").attr("src", gifURL);
-    $("#memes").append(gif);
+        }).then(function (response) {
+            // emptying the memes div each time user clicks a meme button
+            $("#memes").empty();
+            // looping through 10 gifs and appending them to the memes div
+            for (var i = 0; i < 10; i++) {
+                var rating = response.data[i].rating;
+                var ratingDisplay = $("<p>").text("Rating: " + rating);
+                $("#memes").prepend(ratingDisplay);
+                var gifURL = response.data[i].images.original.url;
+                var gif = $("<img>").attr("src", gifURL);
+                $("#memes").prepend(gif);
+            }
+        });
     }
-});
-}
 
-$("#add-meme").on("click", function (event) {
-    event.preventDefault();
-    var meme = $("#meme-input").val().trim();
-    memes.push(meme);
+    $("#add-meme").on("click", function (event) {
+        event.preventDefault();
+        var meme = $("#meme-input").val().trim();
+        memes.push(meme);
+        addButtons();
+    });
+
+    function addButtons() {
+        $("#buttons").empty();
+        for (var i = 0; i < memes.length; i++) {
+            var button = $("<button>");
+            button.addClass("meme-btn");
+            button.attr("data-name", memes[i]);
+            button.text(memes[i]);
+            $("#buttons").append(button);
+        }
+    }
+
+    $(document).on("click", ".meme-btn", displayMemes);
+
+
     addButtons();
-});
-
-function addButtons() {
-    $("#buttons").empty();
-    for (var i = 0; i < memes.length; i++) {
-        var button = $("<button>");
-        button.addClass("meme-btn");
-        button.attr("data-name", memes[i]);
-        button.text(memes[i]);
-        $("#buttons").append(button);
-    }
-}
-
-$(document).on("click", ".meme-btn", displayMemes);
-
-addButtons();
 
 });
 
