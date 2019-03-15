@@ -1,0 +1,10 @@
+body {
+    background-image: url("../images/bananas.png");
+}
+
+.container {
+    background: white;
+    margin-bottom: 0px;
+    height: 600px;
+}
+
