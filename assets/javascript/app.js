@@ -13,14 +13,32 @@ $(document).ready(function () {
             method: "GET"
 
         }).then(function (response) {
-            // looping through 10 gifs and appending the gif url/rating to the #memes div
+            // looping through 10 gifs and appending the gif url(animated/non animated)/rating to the #memes div
             for (var i = 0; i < 10; i++) {
                 var rating = response.data[i].rating;
                 var ratingDisplay = $("<p>").html("Rating: " + rating);
                 $("#memes").prepend(ratingDisplay);
-                var gifURL = response.data[i].images.original.url;
-                var gif = $("<img>").attr("src", gifURL);
+                var gifURL = response.data[i].images.original_still.url;
+                var gifAnimatedURL = response.data[i].images.original.url
+                var gif = $("<img>");
+                gif.attr("src", gifURL);
+                gif.attr("data-still", gifURL);
+                gif.attr("data-animate", gifAnimatedURL);
+                gif.attr("data-state", "still");
+                gif.addClass("gif");
+
                 $("#memes").prepend(gif);
+                // when gif is clicked, animate. If clicked again, make still
+                $(".gif").on("click", function (event) {
+                    var state = $(this).attr('data-state');
+                        if ( state == 'still'){
+                                $(this).attr('src', $(this).data('animate'));
+                                $(this).attr('data-state', 'animate');
+                            } else {
+                                $(this).attr('src', $(this).data('still'));
+                                $(this).attr('data-state', 'still');
+                            };
+                });
             }
         });
     }
@@ -44,7 +62,7 @@ $(document).ready(function () {
             $("#buttons").append(button);
         }
     }
-
+   
     // calling the displayMemes function on meme button click
     $(document).on("click", ".meme-btn", displayMemes);
     // adding buttons for all memes in the original memes array

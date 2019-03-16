@@ -15,6 +15,9 @@ p {
     color: rosybrown;
     font-weight: bold;
     font-style: italic;
+    position: relative;
+    right: 170px;
+    bottom: 15px;
 }
 
 .container {
@@ -26,11 +29,10 @@ p {
 
 .meme-btn {
     color: rosybrown;
-    font-weight: bold;
     background: white;
     margin-bottom: 3px;
     margin: 5px;
-    border: 2px solid rosybrown;
+    border: 1px solid rosybrown;
     width: 200px;
     height: 40px;
     font-size: 20px;
@@ -40,19 +42,18 @@ p {
     color: rosybrown;
     font-weight: bold;
     background: white;
-    border: 2px solid rosybrown;
+    border: 1px solid rosybrown;
 }
 
 #add-meme:hover, .meme-btn:hover {
     color: white;
-    font-weight: bold;
     background: rosybrown;
     border: 2px solid rosybrown;
     cursor: pointer;
 }
 
 #meme-input {
-    border: 2px solid rosybrown;
+    border: 1px solid rosybrown;
 }
 
 #meme-search {
@@ -66,10 +67,11 @@ p {
     margin-bottom: 30px;
 }
 
-img {
+.gif {
     height: 200px;
     width: 250px;
     margin: 20px;
+    cursor: pointer;
 }
 
 
