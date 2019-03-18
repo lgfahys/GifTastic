@@ -17,17 +17,17 @@ $(document).ready(function () {
             for (var i = 0; i < 10; i++) {
                 var rating = response.data[i].rating;
                 var ratingDisplay = $("<p>").html("Rating: " + rating);
-                $("#memes").prepend(ratingDisplay);
                 var gifURL = response.data[i].images.original_still.url;
                 var gifAnimatedURL = response.data[i].images.original.url
                 var gif = $("<img>");
-                gif.attr("src", gifURL);
-                gif.attr("data-still", gifURL);
-                gif.attr("data-animate", gifAnimatedURL);
-                gif.attr("data-state", "still");
-                gif.addClass("gif");
-
+                $(gif).attr("src", gifURL);
+                $(gif).attr("data-still", gifURL);
+                $(gif).attr("data-animate", gifAnimatedURL);
+                $(gif).attr("data-state", "still");
+                $(gif).addClass("gif");
+                $("#memes").prepend(ratingDisplay);
                 $("#memes").prepend(gif);
+                
                 // when gif is clicked, animate. If clicked again, make still
                 $(".gif").on("click", function (event) {
                     var state = $(this).attr('data-state');
@@ -62,7 +62,7 @@ $(document).ready(function () {
             $("#buttons").append(button);
         }
     }
-   
+
     // calling the displayMemes function on meme button click
     $(document).on("click", ".meme-btn", displayMemes);
     // adding buttons for all memes in the original memes array

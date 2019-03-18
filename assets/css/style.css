@@ -72,6 +72,14 @@ p {
     width: 250px;
     margin: 20px;
     cursor: pointer;
+    border: 1px solid rosybrown;
+}
+
+@media screen and (max-width: 401px) {
+    .gif {
+        height: 150px;
+        width: 200px;
+    }
 }
 
 
