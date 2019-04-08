@@ -1,6 +1,4 @@
 # GifTastic
-Week 6 Homework
-
 Description: 
 
 This application is a "Meme Generator" and allows users to generate 10 gifs from any meme category. Once the meme's are generated, users can click to animate and stop animation on each gif. 
