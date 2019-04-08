@@ -9,3 +9,5 @@ Instructions:
 2.) Click on any gif to animate
 3.) Click on the gif again to stop animation
 4.) Search for any meme and add new meme category buttons
+
+https://lgfahys.github.io/GifTastic/
